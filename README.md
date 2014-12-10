@@ -1,7 +1,7 @@
-packer-wheezy
+packer-testing
 =============
 
-Packer configuration to generate Debian Wheezy VirtualBox image/Vagrant boxes.
+Packer configuration to generate Debian Testing VirtualBox image/Vagrant boxes.
 
 Usage
 -----
@@ -16,8 +16,6 @@ To generate a VirtualBox image, edit debian-wheezy file and adapt the variables 
 ```
 You have to set the Debian version and the ISO sha512 checksum. Once done, create your box file:
 ```
-packer build debian-wheezy
+packer build debian-testing
 ```
 That's it :-)
-
-You can find the result on the vagrantcloud here: https://vagrantcloud.com/deimosfr/debian-wheezy

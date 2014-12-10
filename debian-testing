@@ -62,8 +62,6 @@
         "scripts/networking.sh",
         "scripts/sudoers.sh",
         "scripts/vagrant.sh",
-        "scripts/puppet.sh",
-        "scripts/chef.sh",
         "scripts/vbaddguest.sh",
         "scripts/cleanup.sh"
       ]
