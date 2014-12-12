@@ -60,6 +60,7 @@
       "scripts": [
         "scripts/update.sh",
         "scripts/sshd.sh",
+        "scripts/sudoers.sh",
         "scripts/networking.sh",
         "scripts/vagrant.sh",
         "scripts/vbaddguest.sh",
