@@ -1,7 +1,7 @@
 {
     "variables": {
         "debian_version": "testing",
-        "iso_checksum": "67e6c1c7f45a93fe2fa9b3ff8beb53d5888cdcd2bb8d8b98b6f3b3c114f8ee129077588f5b7657cd5d14dab2470226e1e1e0ec19b8fda7629cbe43d9d2bb661a"
+        "iso_checksum": "837b81ee765650e9821b3f975f5b690abe3b279a651b284d4c3a43c080fc540332efd8d0ca11fd2e7ea2eb9c289dec97106c9c9bf7d77ab525ad2bfaf819df41"
     },
   "builders": [
     {
@@ -15,7 +15,7 @@
         "locale=en_US <wait>",
         "kbd-chooser/method=us <wait>",
         "keyboard-configuration/xkb-keymap=us <wait>",
-        "netcfg/get_hostname={{ .Name }} <wait>",
+        "netcfg/get_hostname=debian <wait>",
         "netcfg/get_domain=vagrantup.com <wait>",
         "fb=false <wait>",
         "debconf/frontend=noninteractive <wait>",
@@ -25,12 +25,13 @@
       ],
       "boot_wait": "10s",
       "disk_size": 32768,
+      "hard_drive_interface": "sata",
       "guest_os_type": "Debian_64",
-      "headless": true,
+      "headless": false,
       "http_directory": "http",
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "sha512",
-      "iso_url":"http://cdimage.debian.org/cdimage/daily-builds/daily/arch-latest/amd64/iso-cd/debian-testing-amd64-netinst.iso",
+      "iso_url":"http://cdimage.debian.org/cdimage/weekly-builds/amd64/iso-cd/debian-testing-amd64-netinst.iso",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_port": 22,
@@ -40,8 +41,8 @@
       "virtualbox_version_file": ".vbox_version",
       "vm_name": "debian-{{user `debian_version`}}-amd64",
       "vboxmanage": [
-        [ "modifyvm", "{{.Name}}", "--memory", "512" ],
-        [ "modifyvm", "{{.Name}}", "--cpus", "1" ]
+        [ "modifyvm", "{{.Name}}", "--memory", "4096" ],
+        [ "modifyvm", "{{.Name}}", "--cpus", "4" ]
       ]
     }
   ],
@@ -60,7 +61,6 @@
         "scripts/update.sh",
         "scripts/sshd.sh",
         "scripts/networking.sh",
-        "scripts/sudoers.sh",
         "scripts/vagrant.sh",
         "scripts/vbaddguest.sh",
         "scripts/cleanup.sh"
