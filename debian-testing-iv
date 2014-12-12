@@ -1,6 +1,6 @@
 {
     "variables": {
-        "debian_version": "testing",
+        "debian_version": "testing-iv",
         "iso_checksum": "837b81ee765650e9821b3f975f5b690abe3b279a651b284d4c3a43c080fc540332efd8d0ca11fd2e7ea2eb9c289dec97106c9c9bf7d77ab525ad2bfaf819df41"
     },
   "builders": [
@@ -66,6 +66,21 @@
         "scripts/vbaddguest.sh",
         "scripts/cleanup.sh"
       ]
+    },
+    {
+      "type": "shell",
+      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
+      "inline": "apt-get -y install ansible"
+    },
+    {
+        "type": "ansible-local",
+        "playbook_file": "local.yml",
+        "playbook_paths": [
+                 "provisioning/"
+                       ],
+         "role_paths": [
+            "provisioning/roles/"
+         ]
     }
   ]
 }

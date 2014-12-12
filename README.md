@@ -6,7 +6,7 @@ Packer configuration to generate Debian Testing VirtualBox image/Vagrant boxes.
 Usage
 -----
 
-To generate a VirtualBox image, edit debian-wheezy file and adapt the variables fields:
+To generate a VirtualBox image, edit debian-testing file and adapt the variables fields:
 ```
     "variables": {
         "debian_version": "7.7.0",
@@ -18,4 +18,8 @@ You have to set the Debian version and the ISO sha512 checksum. Once done, creat
 ```
 packer build debian-testing
 ```
-That's it :-)
+
+This branch has a ansible provisioner which:
+ - apply my dotfiles
+ - install common soft
+ - install docker
